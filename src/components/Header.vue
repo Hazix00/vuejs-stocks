@@ -26,7 +26,7 @@
                     >Save & Load <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#" @click="saveData">Save</a></li>
-                    <li><a href="#">Load</a></li>
+                    <li><a href="#" @click="loadData">Load</a></li>
                 </ul>
                 </li>
             </ul>
@@ -50,9 +50,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions([
-            'randomiseStocks'
-        ]),
+        ...mapActions({
+            randomiseStocks: 'randomiseStocks',
+            fetchData: 'loadData'
+        }),
         endDay() {
             this.randomiseStocks()
         },
@@ -64,6 +65,9 @@ export default {
             }
             console.log(data);
             this.$http.put('data.json', data)
+        },
+        loadData() {
+            this.fetchData()
         }
     }
 
