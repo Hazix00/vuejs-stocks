@@ -25,7 +25,7 @@
                     aria-expanded="false"
                     >Save & Load <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Save</a></li>
+                    <li><a href="#" @click="saveData">Save</a></li>
                     <li><a href="#">Load</a></li>
                 </ul>
                 </li>
@@ -55,6 +55,15 @@ export default {
         ]),
         endDay() {
             this.randomiseStocks()
+        },
+        saveData() {
+            const data = {
+                funds: this.$store.getters.funds,
+                stockPortfolio: this.$store.getters.stockPortfolio,
+                stocks: this.$store.getters.stocks
+            }
+            console.log(data);
+            this.$http.put('data.json', data)
         }
     }
 
