@@ -5,23 +5,23 @@
                 <h3 class="panel-title">
                     {{ stock.name }}
                     <small>(Price : {{ stock.price }})</small>
-                    <div class="panel-body">
-                        <div class="pull-left">
-                            <input 
-                            type="number" 
-                            class="form-controle" 
-                            placeholder="Quantity"
-                            v-model.number="quantity">
-                        </div>
-                        <div class="pull-right">
-                            <button 
-                            class="btn btn-success"
-                            @click="buyStock"
-                            :disabled="quantity <= 0 || !Number.isInteger(quantity)"
-                            >Buy</button>
-                        </div>
-                    </div>
                 </h3>
+            </div>
+            <div class="panel-body">
+                <div class="pull-left">
+                    <input 
+                    type="number" 
+                    class="form-controle" 
+                    placeholder="Quantity"
+                    v-model.number="quantity">
+                </div>
+                <div class="pull-right">
+                    <button 
+                    class="btn btn-success"
+                    @click="buyStock"
+                    :disabled="quantity <= 0 || !Number.isInteger(quantity)"
+                    >Buy</button>
+                </div>
             </div>
         </div>
     </div>
