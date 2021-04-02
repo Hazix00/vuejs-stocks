@@ -11,27 +11,39 @@
                 <div class="pull-left">
                     <input 
                     type="number" 
-                    class="form-controle" 
+                    class="form-controle"
+                    :class="{danger: insufficientQuantity || quantity < 0}"
                     placeholder="Quantity"
-                    v-model.number="quantity">
+                    v-model.number="quantity"
+                    >
                 </div>
                 <div class="pull-right">
                     <button 
                     class="btn btn-success"
                     @click="sellStock"
-                    :disabled="quantity <= 0 || !Number.isInteger(quantity)"
-                    >Sell</button>
+                    :disabled="insufficientQuantity || quantity <= 0 || !Number.isInteger(quantity)"
+                    > {{ insufficientQuantity ? 'Insufficient Quantity' : 'Sell' }}</button>
                 </div>
             </div>
         </div>
     </div>
 </template>
+<style scoped>
+    .danger {
+        border: 1px solid red;
+    }
+</style>
 
 <script>
 import { mapActions } from 'vuex'
 
 export default {
-    props: ['stock'],
+    props: ['stock'],    
+    computed:{
+        insufficientQuantity() {
+            return this.quantity > this.stock.quantity
+        },
+    },
     data() {
         return {
             quantity: 0
@@ -50,6 +62,11 @@ export default {
             console.log(order)
             this.placeSellOrder(order)
             this.quantity = 0
+        },
+        dataQuantity() {
+            if (this.quantity < 0) {
+                this.quantity = 0
+            }
         }
     }
 }
