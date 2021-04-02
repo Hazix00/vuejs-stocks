@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "vue-loader-v16": "^16.0.0-beta.5.4",
     "vue-router": "^3.5.1"
   },
   "devDependencies": {
@@ -39,5 +40,7 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "_id": "vuejs-complete@0.1.0",
+  "readme": "ERROR: No README data found!"
 }
