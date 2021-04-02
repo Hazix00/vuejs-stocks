@@ -1,19 +1,21 @@
 ﻿<template>
 <div>
-    <Header></Header>
-    <h1>Home Component</h1>
+    <h1>Trade or View your Portfolio</h1>
+    <h6>You may Save & Load your Data</h6>
+    <h6>Click on 'End Day' to begin a New Day!</h6>
+    <hr>
+    <p>Your Funds: {{ funds }}</p>
 </div>
 </template>
 
 <script>
-import Header from './Header.vue'
+
 export default {
-    components:[
-        Header
-    ],
-    data () {
-        return {}
-    },
+    computed:{
+        funds() {
+            return this.$store.getters.funds
+        }
+    }
 }
 </script>
 
