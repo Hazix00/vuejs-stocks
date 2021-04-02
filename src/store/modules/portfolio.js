@@ -9,7 +9,7 @@ const mutations = {
         if (record) {
             record.quantity += quantity
         } else {
-            state.stock.push({
+            state.stocks.push({
                 id: stockId,
                 quantity
             })
